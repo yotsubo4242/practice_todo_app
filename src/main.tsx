@@ -7,7 +7,7 @@ import Header from "./components/Header.tsx";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     {/* <Header /> */}
-    <App title="Hello Vite + React!">
+    <App>
       <Header />
     </App>
   </StrictMode>

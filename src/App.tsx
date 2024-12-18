@@ -14,8 +14,7 @@ type todo = {
 
 type todolist = todo[];
 
-function App({ title, children }: props) {
-  const [count, setCount] = useState(0);
+function App({ children }: props) {
   const [text, setText] = useState<string>("");
   const [todos, setTodos] = useState<todolist>([]);
 
@@ -53,9 +52,7 @@ function App({ title, children }: props) {
           </Button>
         </div>
       ))}
-      <Button style="delete" onClick={() => setCount((count) => count - 1)}>
-        Delete
-      </Button>
+      <Button style="delete">Delete</Button>
       <Button style="edit">Edit</Button>
       <Button>Default</Button>
       <p className="read-the-docs">
