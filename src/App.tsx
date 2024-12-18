@@ -1,35 +1,68 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import Button from "./components/Button";
 
-function App() {
-  const [count, setCount] = useState(0)
+type props = {
+  title?: string;
+  children?: React.ReactNode;
+};
+
+type todo = {
+  text: string;
+  timeStamp: string;
+};
+
+type todolist = todo[];
+
+function App({ title, children }: props) {
+  const [count, setCount] = useState(0);
+  const [text, setText] = useState<string>("");
+  const [todos, setTodos] = useState<todolist>([]);
+
+  // console.log("todos", todos);
+
+  function addButtonHandler() {
+    if (!text) {
+      return;
+    }
+    setTodos([...todos, { text, timeStamp: new Date().toISOString() }]);
+    setText("");
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
+      {children}
+      {/* <p>{text}</p> */}
+      <input
+        type="text"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+      />
+      <Button style="add" onClick={() => addButtonHandler()}>
+        Add
+      </Button>
+      {todos.map((todo, index) => (
+        <div key={index}>
+          <p>{todo.text}</p>
+          <p>{todo.timeStamp}</p>
+          <Button
+            style="delete"
+            onClick={() => setTodos(todos.filter((_, i) => i !== index))}
+          >
+            Delete
+          </Button>
+        </div>
+      ))}
+      <Button style="delete" onClick={() => setCount((count) => count - 1)}>
+        Delete
+      </Button>
+      <Button style="edit">Edit</Button>
+      <Button>Default</Button>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

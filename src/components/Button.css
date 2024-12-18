@@ -1,0 +1,39 @@
+button.default {
+	background-color: #f0f0f0;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #333;
+	cursor: pointer;
+	font-size: 14px;
+	padding: 10px 20px;
+}
+
+button.add {
+	background-color: #61dafb;
+	border: 1px solid #61dafb;
+	border-radius: 3px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 14px;
+	padding: 10px 20px;
+}
+
+button.delete {
+	background-color: #ff0000;
+	border: 1px solid #ff0000;
+	border-radius: 3px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 14px;
+	padding: 10px 20px;
+}
+
+button.edit {
+	background-color: #ffcc00;
+	border: 1px solid #ffcc00;
+	border-radius: 3px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 14px;
+	padding: 10px 20px;
+}
